@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>회원정보 수정</title>
+</head>
+<body>
+<div>
+    <p>회원 정보를 수정하겠습니까?</p>
+    <form th:method="post" th:action="@{|/users/change/state/${userId}|}" th:object="${inStatus}">
+        <input type="radio" th:field="*{status}" th:value="JOINED">가입
+        <input type="radio" th:field="*{status}" th:value="DORMANT">휴면
+        <input type="radio" th:field="*{status}" th:value="CANCELED">탈퇴
+        <button type="submit">저장</button>
+    </form>
+</div>
+
+</body>
+</html>
