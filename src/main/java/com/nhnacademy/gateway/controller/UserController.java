@@ -32,7 +32,7 @@ public class UserController {
             throw new dataValidException(bindingResult);
         }
         userService.registerUser(request);
-        return "redirect:/users/login";
+        return "redirect:/login";
     }
 
     @GetMapping("/change/state/{userId}")

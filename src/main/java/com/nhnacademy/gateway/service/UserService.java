@@ -54,7 +54,6 @@ public class UserService {
     public void updateUserStatus(String id, Status status){
         String requestUrl = serverUrl+"/users/change/state/"+id;
 
-        System.out.println(status.getStatus());
         HttpEntity<Status> httpEntity = new HttpEntity<>(status, httpHeaders);
 
         restTemplate.exchange(requestUrl,
@@ -63,6 +62,18 @@ public class UserService {
                 new ParameterizedTypeReference<>() {
                 }, id);
 
+    }
+
+    public Optional<UserResponse> getUserByEmail(String email){
+        String requestUrl = serverUrl+"/users/email/"+email;
+
+        HttpEntity<String> httpEntity = new HttpEntity<>(httpHeaders);
+        ResponseEntity<UserResponse> response = restTemplate.exchange(requestUrl,
+                HttpMethod.GET,
+                httpEntity,
+                new ParameterizedTypeReference<UserResponse>() {
+                }, email);
+        return Optional.ofNullable(response.getBody());
     }
 
 }

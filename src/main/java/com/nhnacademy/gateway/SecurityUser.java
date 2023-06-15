@@ -17,13 +17,23 @@ import java.util.Map;
 @ToString
 public class SecurityUser implements UserDetails, OAuth2User {
     private User user;
+    private Map<String, Object> attributes;
     public SecurityUser(User user){
         this.user = user;
     }
+    public SecurityUser(User user, Map<String, Object> attributes){
+        this.user = user;
+        this.attributes = attributes;
+    }
 
+    /**
+     * OAuth2User
+     *
+     * @return
+     */
     @Override
     public Map<String, Object> getAttributes() {
-        return null;
+        return attributes;
     }
 
     /**
@@ -95,6 +105,7 @@ public class SecurityUser implements UserDetails, OAuth2User {
 
     @Override
     public String getName() {
-        return null;
+        String sub = attributes.get("sub").toString();
+        return sub;
     }
 }
