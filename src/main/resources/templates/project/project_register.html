@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org" lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8" />
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <title>프로젝트 등록</title>
+    <style>
+        .container {
+            max-width: 560px;
+        }
+        .field-error {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form action="/projects/register" th:action th:object="${project}" method="post">
+        <h1>Project Register</h1>
+        <hr/>
+
+        <div th:if="${#fields.hasGlobalErrors()}">
+            <p class="field-error" th:each="err : ${#fields.globalErrors()}" th:text="${err}">글로벌 오류 메시지</p>
+        </div>
+
+        <div>
+            <label for="title">TITLE</label>
+            <input type="text" id="title" th:field="*{title}" class="form-control"
+                   th:errorclass="field-error" placeholder="제목">
+            <div class="field-error" th:errors="*{title}">
+                제목이 비어있습니다.
+            </div>
+        </div>
+        <div>
+            <label for="content">CONTENT</label>
+            <input type="text" id="content" th:field="*{content}" class="form-control"
+                   th:errorclass="field-error" placeholder="내용">
+            <div class="field-error" th:errors="*{content}">
+                내용이 비어있습니다.
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <button class="w-100 btn btn-primary btn-lg" type="submit">register</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

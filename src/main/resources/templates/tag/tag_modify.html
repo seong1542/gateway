@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org" lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8" />
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+    <title>태그 수정</title>
+</head>
+
+<body>
+    <h1>Tag Modify</h1>
+    <hr/>
+    <form action="/tag/modify" method="post">
+        <p> Tag Modify </p>
+        <label>
+            <input type="text" name="tag" placeholder="modify name">
+        </label>
+        <input type="submit" value="modify">
+
+    </form>
+</body>
+</html>

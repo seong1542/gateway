@@ -14,12 +14,13 @@
 <body>
 <div class="home-page">
     <p>NHN - Dooray</p>
-    <div th:if="${session.userName} ==null">
-        <p>기존 회원 : <a href="/login">로그인하러 가기</a></p>
-        <p>신규 회원 : <a href="/users/join">회원가입하러 가기</a></p>
+    <div th:if="${session.username} == null">
+        <p>기존 회원 : <a href="/loginForm">로그인하러 가기</a></p>
+        <p>신규 회원 : <a href="/users/join">회원 가입하러 가기</a></p>
     </div>
 
-    <p th:if="${session.username} !=null"><a href="/logout">로그아웃 하러가기</a></p>
+    <p th:if="${session.username} !=null">
+        <a href="/logout">로그아웃 하러가기</a></p>
 </div>
 </body>
 </html>

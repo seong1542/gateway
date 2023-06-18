@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org" lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8" />
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+    <title>프로젝트 목록</title>
+</head>
+<body>
+    <h1>Project List</h1>
+    <hr/>
+    <table>
+        <thead>
+            <tr>
+                <th>PROJECT NO</th>
+                <th>PROJECT NAME</th>
+                <th>PROJECT STATUS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="project : ${projects}">
+                <td th:text="${project.id}"></td>
+                <td th:text="${project.name}"
+                    th:onclick="|location.href='@{/projects/${project.id}'|">
+                </td>
+                <td th:text="${project.status}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
